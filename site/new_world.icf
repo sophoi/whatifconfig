@@ -1,0 +1,3 @@
+#include world.icf
+#include america.icf
+#include antarctica.icf

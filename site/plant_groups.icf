@@ -1,0 +1,16 @@
+#GROUPDEF tree
+yew
+maple
+oak
+#ENDGROUPDEF
+
+#GROUPDEF bush
+potato
+fern
+algae
+#ENDGROUPDEF
+
+#GROUPDEF grass
+flytrap
+sunflower
+#ENDGROUPDEF

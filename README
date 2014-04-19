@@ -1,0 +1,39 @@
+what-if-config (a.k.a what's cooking)
+
+concept
+1. config dependency tree by parsing #include and in file reference
+   heed only #include files with same suffix (.ini, .icf etc) sans .gz, .bz2, or .zip
+2. input: dependency tree, source and target dir, and a proposed new file in local/target dir
+   output: possibly affected files and their diff
+3. dependency tree optionally needs to be pruned with a "useful nodes" list, in that
+   only the useful tree nodes and their ancestors are essential and will be marked so
+   the "useless nodes" will join the depdency/diff check yet will be heeded useless
+4. prod site / staging site / work site / [fossil site]
+   prod site is where the files are used by production binaries
+   staging site is where the proposed changing files are placed by people
+   work site is where the current user is placing the files to be staged
+   sometimes the sites mix, ex. prod site can contain the staged files, or other mixes
+5. main dependency tree is created from prod site; the tree can change with chaging files
+   changes in dependency tree is also considered part of the diff to show
+   files orginally depend on a node and newly depending on this node both to be shown
+6. the "useful nodes" list may also change, thus affecting the diff results
+7. optionally useful is support of fossil sites as source/targets for sims
+   fossil site is prod site content of a given time archived, it may depend on
+   fossile "useful nodes" list
+
+impl
+1. depencency tree requies following operations
+   * prune on "useful nodes"
+   * mark nodes "useful" or "useless"
+   * find the children of any given node, or multiple nodes
+   * it's a multi-parent dependency tree, and there may be "diamonds"
+2. user interface
+   for a potential file change (set), call diffx to show it's own change(s)
+   also display a tree of potential affected files, and prompt user whether to show diff
+3. running modes
+   single user mode: with prod, staging, and work sites
+   global check mode: with prod and staging sites
+   sim mode: with all possible sites
+4. deps tree generation
+   for large deployment base, create global cache dep tree with update ts to speed up
+   or, we use gnu parallel to grep for the inicial #include references

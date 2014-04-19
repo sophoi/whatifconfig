@@ -1,0 +1,26 @@
+#GROUPDEF AMPHIBIAN
+seymouria
+caecilian
+newt
+frog
+toad
+#ENDGROUPDEF
+
+#GROUPDEF MAMMAL
+cat
+dog
+lion
+tiger
+elephant
+hipo
+#ENDGROUPDEF
+
+#GROUPDEF FISH
+carp
+lionfish
+dunkleosteus
+seahorse
+tuna
+tilapia
+shark
+#ENDGROUPDEF
